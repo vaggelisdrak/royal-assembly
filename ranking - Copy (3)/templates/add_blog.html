@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="../static/img/crown-solid-24.png" type="image/x-icon">
+
+    <!--=============== BOXICONS ===============-->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet' type="text/css">
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" type="text/css" href="../static/css/swiper-bundle.min.css">
+
+    <!--=============== CSS ===============-->
+    <link href="../static/css/styles.css" rel="stylesheet" type="text/css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <script src="../static/js/loading.js"></script>
+
+    <title>Royal Assembly</title>
+    <style>
+        @media screen and (max-width: 400px) {
+            .inputt-field {
+                width: 60%;
+            }
+
+            .contact__card {
+                grid-template-columns: repeat(2, 150px);
+                justify-content: center;
+            }
+
+            #titlee {
+                display: inline-block;
+            }
+        }
+
+
+        @media screen and (max-width: 500px) {
+            .inputt-field {
+                width: 70%;
+            }
+
+            #titlee {
+                display: inline-block;
+            }
+
+            .submitt-btn {
+                padding: 10px;
+            }
+
+            .contact__card-box {
+                width: 300px;
+            }
+
+            .inputt-field {
+                width: 100%;
+            }
+
+            .submitt-btn {
+                padding: 10px;
+            }
+        }
+
+        @media screen and (min-width: 510px) {
+
+            #titlee {
+                display: flex;
+            }
+
+        }
+
+        /*-----------------------------------
+        .btn-file {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+
+        input[readonly] {
+        background-color: white !important;
+        cursor: text !important;
+        }
+
+        /* this is only due to codepen display don't use this outside of codepen */
+
+                
+    </style>
+</head>
+
+<body>
+    {{ ckeditor.load() }}
+    <div class="se-pre-con"></div>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">
+                Royal&nbsp;Assembly
+            </a>
+
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="/view_blog" class="nav__link">
+                            <i class='bx bx-arrow-back'></i>
+                            <span>Back</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/" class="nav__link">
+                            <i class='bx bx-home-alt-2'></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#change" class="nav__link active-link">
+                            <i class='bx bx-transfer'></i>
+                            <span>Edit</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/#contact" class="nav__link">
+                            <span>Contact</span>
+                            <i class='bx bx-phone'></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Theme change button -->
+            <i class='bx bx-moon change-theme' id="theme-button"></i>
+
+            <a href="#foot" class="nav__button button">Subscribe</a>
+        </nav>
+    </header>
+
+    <!--==================== MAIN ====================-->
+    <main class="main">
+        <section class="subscribe section">
+            <div class="subscribe__container container">
+                <h1 class="subscribe__title">
+                    Create a Blog Post
+                </h1>
+                <!--<a href="#" class="button subscribe__button">
+                                Get Started
+                            </a>-->
+                <form enctype=multipart/form-data action="/add_blog" method="POST">
+                    <input type="text" placeholder="Title" class="subscribe__input" name="title" required>
+                    <input type="text" placeholder="Topic" class="subscribe__input" name="topic" required>
+                    <input type="text" placeholder="Tags" class="subscribe__input" name="tags">
+                    <input type="file" name="image" class="subscribe__input" style="margin-bottom: 30px;">
+                    {{ ckeditor.create() }}
+                    <!--<textarea  class="subscribe__input"  name="content" maxlength="2000" style="height: 500px;"></textarea>-->
+                    <input type="submit"  name="Submit" class="subscribe__input" style="cursor: pointer; margin-top:25px;"/>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer section" id="foot">
+        <div class="footer__container container grid">
+            <div>
+                <a href="" class="footer__logo" style="letter-spacing: 4px;">
+                    Royal Assembly <i class='bx bxs-crown'></i>
+                </a>
+                <p class="footer__description">
+                    Our vision is to make all people <br>
+                    the best place to live for them.
+                </p>
+            </div>
+
+            <div class="footer__content">
+                <div>
+                    <h3 class="footer__title">
+                        About
+                    </h3>
+
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#" class="footer__link">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Features</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">News & Blog</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">
+                        Company
+                    </h3>
+
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#" class="footer__link">How We Work?</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Capital</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Security</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">
+                        Support
+                    </h3>
+
+                    <ul class="footer__links">
+                        <li>
+                            <a href="#" class="footer__link">FAQs</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Support center</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer__link">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">
+                        Follow us
+                    </h3>
+
+                    <ul class="footer__social">
+                        <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                            <i class='bx bxl-facebook-circle'></i>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                            <i class='bx bxl-instagram-alt'></i>
+                        </a>
+                        <a href="https://www.pinterest.com/" target="_blank" class="footer__social-link">
+                            <i class='bx bxl-pinterest'></i>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer__info container">
+            <span class="footer__copy">
+                &#169; Vaggelisdrak. All rigths reserved
+            </span>
+            <br>
+            <div class="footer__privacy" style="margin-top: 30px;">
+                <a href="#">Terms & Agreements</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class='bx bx-chevrons-up'></i>
+    </a>
+
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src="../static/js/scrollreveal.min.js"></script>
+
+    <!--=============== SWIPER JS ===============-->
+    <script src="../static/js/swiper-bundle.min.js"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="../static/js/main.js"></script>
+
+</body>
+
+</html>

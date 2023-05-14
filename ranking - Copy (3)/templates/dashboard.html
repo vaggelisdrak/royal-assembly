@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== FAVICON ===============-->
+        <link rel="shortcut icon" href="../static/img/crown-solid-24.png" type="image/x-icon">
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+        <!--=============== BOXICONS ===============-->
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet' type="text/css">
+        
+        <!--=============== SWIPER CSS ===============-->
+        <link rel="stylesheet" type="text/css"  href="../static/css/swiper-bundle.min.css">
+
+        <!--=============== CSS ===============-->
+        <link href="../static/css/styles.css" rel="stylesheet" type="text/css" >
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    
+
+        <link rel="stylesheet" type="text/css"  href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
+        
+        <!-- Latest Sortable -->
+        <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+        <script src="../static/js/loading.js"></script>
+
+        <title>Royal Assembly</title>
+        <style>
+            #cardd{
+            opacity: 1;
+            animation-duration: 3s;
+            animation: none;
+            }*/
+
+            /*#carddd:nth-child() {
+            animation: none;
+            animation-delay: 0s;
+            }
+
+            .sortable-chosen{
+                box-shadow: 8px 8px 32px #000000;
+            }
+
+            /* Class name for the dragging item */
+            .sortable-drag{
+                opacity: 0.7;
+            }
+
+            .sortable-chosen{
+                box-shadow: 8px 8px 32px #000000;
+            }
+
+            
+            @media screen and (max-width: 400px) {
+                .inputt-field{
+                    width: 60%;
+                }
+                .contact__card {
+                grid-template-columns: repeat(2, 150px);
+                justify-content: center;
+                }
+                #titlee{
+                    display: inline-block;
+                }
+            }
+
+            @media screen and (max-width: 500px) {
+                .inputt-field{
+                    width: 70%;
+                }
+                #titlee{
+                    display: inline-block;
+                }
+                .submitt-btn{
+                    padding: 10px;
+                }
+            }
+
+           @media screen and (min-width: 510px) {
+
+                #titlee{
+                    display: flex;
+                }
+
+            }
+            </style>
+    </head>
+    <body>
+        <div class="se-pre-con"></div>
+        <!--==================== HEADER ====================-->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="#" class="nav__logo">
+                    Royal&nbsp;Assembly
+                </a>
+
+                <div class="nav__menu">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="/" class="nav__link active-link">
+                                <i class='bx bx-home-alt-2' ></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#list" class="nav__link">
+                                <i class='bx bx-list-ol'></i>
+                                <span>List</span>
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#change" class="nav__link">
+                                <i class='bx bx-transfer' ></i>
+                                <span>Change</span>
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="/#contact" class="nav__link">
+                                <span>Contact</span>
+                                <i class='bx bx-phone' ></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Theme change button -->
+                <i class='bx bx-moon change-theme' id="theme-button"></i>
+
+                <a href="#foot" class="nav__button button">Subscribe</a>
+            </nav>
+        </header>
+
+        <!--==================== MAIN ====================-->
+        <main class="main">
+            <!--==================== POPULAR ====================-->
+            <section class="section" id="popular">
+                <div class="contact__container container grid">
+                    <div class="contact__images">
+                        <!--<div class="contact__orbe" style="height: auto; padding: 15px; max-height: 1200px; overflow: auto;" id="list">-->
+                            <div class="contact__orbe" style="height: auto; padding: 15px;" id="list">
+                            <div class="search"  draggable="false">
+                                <form action="/admin_search" method="POST" class="search-form" style="display: flex; " draggable="false" >
+                                    <input type="number" class="subscribe__input" placeholder="Fetch" style="width: 20%; margin-right: 10px;" name="num" value="{{n}}">
+                                    <input type="text" id="tags2" class="subscribe__input" placeholder="Search..." name="search" style="
+                                    border-bottom-right-radius: 0px;
+                                    border-top-right-radius: 0px;">
+                                    <input type="submit" value="Submit" style="
+                                    width: 20%; 
+                                    background-color: #C69A6Dff; 
+                                    border-bottom-right-radius: 10px;
+                                    border-top-right-radius: 10px;
+                                    ">
+                                </form>
+                            </div>
+                            <br>
+                            {% for i in players %}
+                                <div class="contact__card-box" id="cardd" value="{{i.name}},{{i.position}}">
+                                    <div id="listt">
+                                    <div class="contact__card-info" >
+                                        <div class="ccard" style="margin: 0px; ">
+                                            <div class="img">
+                                                {% if i.filename %}
+                                                    <img src="/download/{{i.filename}}">
+                                                {% else %} 
+                                                    <img src="../static/img/Default_pfp.svg.png">
+                                                {% endif %}
+                                            </div>
+                                            <div class="infos">
+                                                <div class="name">
+                                                    <h2 style="display: inline; margin-right: 20px; font-size: 23px;" 
+                                                    {% if i.position == 1 %}
+                                                        id="gold"
+                                                    {% elif i.position == 2 %}
+                                                        id="silver"
+                                                    {% elif i.position == 3 %}
+                                                        id="bronze"
+                                                    {% else %}
+                                                        id="other"
+                                                    {% endif %}>No. {{i.position}}</h2>
+
+                                                    <h2 style="display: inline; margin-right: 50px;"> {{i.name}}</h2>
+                                                    {% if i.trend > 0 %}
+                                                        <h3 style="display: inline;"> <span style="color: rgb(9, 248, 9);"> <i class='bx bxs-upvote'></i> </span> {{i.trend}}</h3>
+                                                    {% elif 0 > i.trend %}
+                                                        <h3 style="display: inline;"> <span style="color: rgb(255, 71, 71);"> <i class='bx bxs-downvote'></i> </span> {{(i.trend|int)*(-1)}}</h3>
+                                                    {% else %}
+                                                        <!--<h3 style="display: inline;"><i class='bx bx-minus'></i></h3>-->
+                                                        <h3 style="display: inline;">New</h3>
+                                                    {% endif %}
+                                                <!--<h4>@bradsteve</h4>-->
+                                                </div>
+                                                <!--<p class="text">
+                                                I'm a Front End Developer
+                                                </p>-->
+                                                <hr>
+                                                <br>
+                                                <ul class="stats">
+                                                <li>
+                                                    <h3>{{i.score}}</h3>
+                                                    <h4>Score</h4>
+                                                </li>
+                                                <li>
+                                                    <h3>{{i.wins}}-{{i.loses}}</h3>
+                                                    <h4>W-L</h4>
+                                                </li>
+                                                <li>
+                                                    <h3>{{i.highest}}</h3>
+                                                    <h4>Highest</h4>
+                                                </li>
+                                                <li>
+                                                    <h3>{{i.lowest}}</h3>
+                                                    <h4>Lowest</h4>
+                                                </li>
+                                                </ul>
+                                                <div class="links">
+                                                <a href="/edit/{{i.id}}"><button class="follow">Edit</button></a>
+                                                <a href="/delete/{{i.id}}"><button class="view" style="color: #999;" onclick ="return confirm('Are you sure you want to delete this player?')">Delete</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="contact__content" id="change">
+                        <div class="contact__data">
+                            <span class="section__subtitle">User panel</span>
+                            <h2 class="section__title">
+                                Dashboard<span>.</span>
+                            </h2>
+                            <div style="display: flex;">
+                                <p class="contact__description">
+                                    Username: <span style="color: #C69A6Dff;"><a href="/updateaccount/{{user}}" style="color: #C69A6Dff; text-decoration: underline;">{{user}}</a></span>&nbsp;|&nbsp;&nbsp;
+                                </p>
+                                <p class="contact__description">
+                                    Followers: <span style="color: #C69A6Dff;"><a href="#" style="color: #C69A6Dff; ">{{profile.followers|length}}</a></span>&nbsp;
+                                </p>
+                                <p class="contact__description">
+                                    &nbsp;| Following: <span style="color: #C69A6Dff;"><a href="#" style="color: #C69A6Dff; ">{{profile.following|length}}</a></span>
+                                </p>
+                                <p class="contact__description">
+                                    &nbsp;| <a href="/view_users/{{user}}" style="color: #C69A6Dff; text-decoration: underline;">Discover USERS</a></span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="contact__card">
+                            <div class="contact__card-box">
+                                <div class="contact__card-info">
+                                    <i class='bx bxs-add-to-queue'></i>
+                                    
+                                    <div>
+                                        <h3 class="contact__card-title" style="margin-top: 5px;">
+                                            Add Player 
+                                        </h3>
+                                        <br>
+                                        <!--<p class="contact__card-description">
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                                        </p>-->
+                                        <form enctype=multipart/form-data action="/add" method="POST">
+                                            <input type="text" class="inputt-field" placeholder="Name" name="username" required>
+                                            <input type="number" class="inputt-field" placeholder="Wins" name="wins">
+                                            <input type="number" class="inputt-field" placeholder="Loses" name="loses">
+                                            <input type="number" class="inputt-field" placeholder="Score" name="score">
+                                            <input type="number" class="inputt-field" placeholder="Position" name="position">
+                                            <input type="file" class="inputt-field" placeholder="image" name="image" style="color: #999;" required>
+                                            <button type="submit" class="submitt-btn" style="margin-top: 20px; width: auto;">ADD</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contact__card-box">
+                                <div class="contact__card-info">
+                                    <i class='bx bx-transfer' ></i>
+                                    
+                                    <div style="width: 255px;">
+                                        <div id="titlee">
+                                            <h3 class="contact__card-title" style="margin-top: 5px;">
+                                                Change 
+                                            </h3>
+                                            <h3 class="contact__card-title" style="margin-top: 5px;">
+                                                &nbsp;Position
+                                            </h3>
+                                        </div>
+                                        <br>
+                                        <form action="/change_pos" method="POST">
+                                            <input type="text" id="tags"  class="inputt-field" placeholder="Name" name="username" required style="margin-bottom: 30px;">
+                                            <br>
+                                            <!--<p class="contact__card-description">From</p>
+                                            <input type="number" class="inputt-field" placeholder="Current position" name="from" required >-->
+                                            <p class="contact__card-description">To</p>
+                                            <input type="number" class="inputt-field" placeholder="New position" name="to" required>
+                                            <button type="submit" class="submitt-btn" style="margin-top: 20px; width: auto;">MOVE</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contact__card-box">
+                                <div class="contact__card-info">
+                                    <i class='bx bx-history' ></i>
+                                    
+                                    <div id="hhistroy">
+                                        <h3 class="contact__card-title" style="margin-top: 5px;">
+                                            History (most recent)
+                                        </h3>
+                                        <br>
+                                        {% for i in changes %}
+                                            <br>
+                                            {% if i.too != 0%}
+                                                {% if i.fromm > i.too %}
+                                                    <p class="contact__card-description">
+                                                        {{i.name}} moved up the list from position {{i.fromm}} to position {{i.too}} on {{i.date}}
+                                                    </p>
+                                                {% else %}
+                                                    <p class="contact__card-description">
+                                                        {{i.name}} moved down the list from position {{i.fromm}} to position {{i.too}} on {{i.date}}
+                                                    </p>
+                                                {% endif %}
+                                            {% else %}
+                                                {% if i.fromm != 0%}
+                                                    <p class="contact__card-description">
+                                                        {{i.name}} was removed from the list on {{i.date}}
+                                                    </p>
+                                                {% else %}
+                                                    <p class="contact__card-description">
+                                                        {{i.name}} was added to the list on {{i.date}}
+                                                    </p>
+                                                {% endif %}
+                                            {% endif %}
+                                            <hr>
+                                        {% endfor %}
+                                    </div>
+                                    
+                                </div>
+                                <a href="/clear"><button  class="submitt-btn" style="margin-top: 20px; width: auto;" onclick ="return confirm('Are you sure you want to clear the History?')">Delete</button></a>
+                            </div>
+
+                            <div class="contact__card-box">
+                                <div class="contact__card-info">
+                                    <i class='bx bxs-cog' ></i>
+                                    
+                                    <div>
+                                        <h3 class="contact__card-title" style="margin-top: 5px;">
+                                            Account Settings
+                                        </h3>
+                                        <br>
+                                        <!--<p class="contact__card-description">
+                                            <a href="/updateaccount/{{user}}" style="color: #C69A6Dff; text-decoration: underline;">Edit your Profile </a> 
+                                        </p>-->
+                                    </div>
+                                </div>
+                                <a href="/updateaccount/{{user}}"><button  class="submitt-btn" style="margin-top: 20px; width: auto;">Edit your Profile</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </section>
+            
+        </main>
+
+        <!--==================== FOOTER ====================-->
+        <footer class="footer section" id="foot">
+            <div class="footer__container container grid">
+                <div>
+                    <a href="" class="footer__logo" style="letter-spacing: 4px;">
+                        Royal Assembly <i class='bx bxs-crown'></i>
+                    </a>
+                    <p class="footer__description">
+                        Our vision is to make all people <br> 
+                        the best place to live for them.
+                    </p>
+                </div>
+
+                <div class="footer__content">
+                    <div>
+                        <h3 class="footer__title">
+                            About
+                        </h3>
+
+                        <ul class="footer__links">
+                            <li>
+                                <a href="#" class="footer__link">About Us</a>
+                            </li>
+                            <li>
+                                <a href="#" class="footer__link">Features</a>
+                            </li>
+                            <li>
+                                <a href="#" class="footer__link">News & Blog</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="footer__title">
+                            Company
+                        </h3>
+
+                        <ul class="footer__links">
+                            <li>
+                                <a href="#" class="footer__link">How We Work?</a>
+                            </li>
+                            <li>
+                                <a href="#" class="footer__link">Capital</a>
+                            </li>
+                            <li>
+                                <a href="#" class="footer__link">Security</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="footer__title">
+                            Support
+                        </h3>
+
+                        <ul class="footer__links">
+                            <li>
+                                <a href="#" class="footer__link">FAQs</a>
+                            </li>
+                            <li>
+                                <a href="#" class="footer__link">Support center</a>
+                            </li>
+                            <li>
+                                <a href="#" class="footer__link">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="footer__title">
+                            Follow us
+                        </h3>
+
+                        <ul class="footer__social">
+                            <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                                <i class='bx bxl-facebook-circle' ></i>
+                            </a>
+                            <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                                <i class='bx bxl-instagram-alt' ></i>
+                            </a>
+                            <a href="https://www.pinterest.com/" target="_blank" class="footer__social-link">
+                                <i class='bx bxl-pinterest' ></i>
+                            </a>    
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__info container">
+                <span class="footer__copy">
+                    &#169; Vaggelisdrak. All rigths reserved
+                </span>
+
+                <div class="footer__privacy">
+                    <a href="#">Terms & Agreements</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </footer>
+
+
+        <!--========== SCROLL UP ==========-->
+        <a href="#" class="scrollup" id="scroll-up">
+            <i class='bx bx-chevrons-up'></i>
+        </a>
+
+        <!--=============== SCROLLREVEAL ===============-->
+        <script src="../static/js/scrollreveal.min.js"></script>
+
+        <!--=============== SWIPER JS ===============-->
+        <script src="../static/js/swiper-bundle.min.js"></script>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="../static/js/main.js"></script>
+
+        <!--===== SORTABLE JS =====-->
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+        <!---search input AI-->
+        <script>
+            jQuery.curCSS = function(element, prop, val) {
+                return jQuery(element).css(prop, val);
+            };
+            $( function() {
+                $.ajax({
+                    url: '{{ url_for("autocomplete") }}'
+                    }).done(function(data){
+                        $('#tags').autocomplete({
+                            source: data,
+                            minLength: 1
+                        });
+                    });
+                });
+        </script>
+        <script>
+            jQuery.curCSS = function(element, prop, val) {
+                return jQuery(element).css(prop, val);
+            };
+            $( function() {
+                $.ajax({
+                    url: '{{ url_for("autocomplete") }}'
+                    }).done(function(data){
+                        $('#tags2').autocomplete({
+                            source: data,
+                            minLength: 1
+                        });
+                    });
+                });
+        </script>
+    </body>
+</html>

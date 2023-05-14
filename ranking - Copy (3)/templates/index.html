@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== FAVICON ===============-->
+        <link rel="shortcut icon" href="../static/img/crown-solid-24.png" type="image/x-icon">
+
+        <!--=============== BOXICONS ===============-->
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet' type="text/css">
+        
+        <!--=============== SWIPER CSS ===============-->
+        <link rel="stylesheet" type="text/css"  href="../static/css/swiper-bundle.min.css">
+
+        <!--=============== CSS ===============-->
+        <link href="../static/css/styles.css" rel="stylesheet" type="text/css" >
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    
+
+        <link rel="stylesheet" type="text/css"  href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
+        <script src="../static/js/loading.js"></script>
+
+        <title>Royal Assembly</title>
+    </head>
+    <body>
+        <div class="se-pre-con"></div>
+        <!--==================== HEADER ====================-->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="#" class="nav__logo">
+                    Royal&nbsp;Assembly
+                </a>
+
+                <div class="nav__menu">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#home" class="nav__link active-link">
+                                <i class='bx bx-home-alt-2' ></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#popular" class="nav__link">
+                                <i class='bx bx-user-circle' ></i>
+                                <span>About us</span>
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#value" class="nav__link">
+                                <i class='bx bx-briefcase-alt' ></i>
+                                <span>Portfolio</span>
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#contact" class="nav__link">
+                                <span>Contact</span>
+                                <i class='bx bx-phone' ></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Theme change button -->
+                <i class='bx bx-moon change-theme' id="theme-button"></i>
+
+                <a href="#foot" class="nav__button button">Subscribe</a>
+            </nav>
+        </header>
+
+        <!--==================== MAIN ====================-->
+        <main class="main">
+            <!--==================== HOME ====================-->
+            <section class="home section" id="home" style="  
+            width: 100%;
+            height: 100vh;">
+                <div class="home__container container grid">
+                    <div class="home__data">
+                        <h1 class="home__title" >
+                            Organize <br> Your  <span style="color: hsl(0, 0%, 100%); text-shadow: 0 0 3px #fff;; padding: 2px;">Own</span> <br> Tournament
+                        </h1>
+                        <!--<p class="home__description">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                        </p>-->
+    
+                        <form action="" class="home__search">
+                            <i class='bx bx-play-circle'></i>
+                            <h4 class="home__search-input">Get started with RA</h4>
+                            <button class="button">
+                                Explore
+                            </button>
+                        </form>
+                        <br>
+                        <div class="home__value">
+                            <div>
+                                <h1 class="home__value-number" id="count1">
+                                    0 
+                                </h1><span class="plus"> +</span>
+                                <span class="home__value-description" >
+                                    Premium <br> Product
+                                </span>
+                            </div>
+    
+                            <div>
+                                <h1 class="home__value-number" id="count2">
+                                    0 
+                                </h1><span class="plus"> +</span>
+                                <span class="home__value-description">
+                                    Happy <br> Customer
+                                </span>
+                            </div>
+    
+                            <div>
+                                <h1 class="home__value-number" id="count3">
+                                    0 
+                                </h1><span class="plus"> +</span>
+                                <span class="home__value-description">
+                                    Awards <br> Winning
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <br>
+            
+            <!--==================== POPULAR ====================-->
+            <section class="section" id="popular">
+                <div class="contact__container container grid">
+
+                    <div class="contact__images">
+                        <div class="contact__orbe" style="height: auto; padding: 15px;" id="list">
+                            <div class="search">
+                                <form action="/ssearch" method="POST" class="search-form" style="display: flex;">
+                                    <input type="number" class="subscribe__input" placeholder="Fetch" style="width: 20%; margin-right: 10px;" name="num" value="{{n}}">
+                                    <input type="text" id="tags3" class="subscribe__input" placeholder="Search..." name="search" style="
+                                    border-bottom-right-radius: 0px;
+                                    border-top-right-radius: 0px;">
+                                    <input type="submit" value="Submit" style="
+                                    width: 20%; 
+                                    background-color: #C69A6Dff; 
+                                    border-bottom-right-radius: 10px;
+                                    border-top-right-radius: 10px;
+                                    ">
+                                </form>
+                            </div>
+                            <br>
+                            {% for i in players %}
+                                <div class="contact__card-box" id="cardd">
+                                    <div class="contact__card-info">
+                                        <div class="ccard" style="margin: 0px;">
+                                            <div class="img">
+                                                {% if i.filename %}
+                                                    <img src="/download/{{i.filename}}">
+                                                {% else %} 
+                                                    <img src="../static/img/Default_pfp.svg.png">
+                                                {% endif %}
+                                            </div>
+                                            <div class="infos">
+                                                <div class="name">
+                                                    <h2 style="display: inline; margin-right: 20px; font-size: 23px;" 
+                                                    {% if i.position == 1 %}
+                                                        id="gold"
+                                                    {% elif i.position == 2 %}
+                                                        id="silver"
+                                                    {% elif i.position == 3 %}
+                                                        id="bronze"
+                                                    {% else %}
+                                                        id="other"
+                                                    {% endif %}>No. {{i.position}}</h2>
+
+                                                    <h2 style="display: inline; margin-right: 50px;"> {{i.name}}</h2>
+                                                    {% if i.trend > 0 %}
+                                                        <h3 style="display: inline;"> <span style="color: rgb(9, 248, 9);"> <i class='bx bxs-upvote'></i> </span> {{i.trend}}</h3>
+                                                    {% elif 0 > i.trend %}
+                                                        <h3 style="display: inline;"> <span style="color: rgb(255, 71, 71);"> <i class='bx bxs-downvote'></i> </span> {{(i.trend|int)*(-1)}}</h3>
+                                                    {% else %}
+                                                        <h3 style="display: inline;">New</h3>
+                                                    {% endif %}
+                                                    
+                                                <!--<h4>@bradsteve</h4>-->
+                                                </div>
+                                                <!--<p class="text">
+                                                I'm a Front End Developer
+                                                </p>-->
+                                                <hr>
+                                                <br>
+                                                <ul class="stats">
+                                                <li>
+                                                    <h3>{{i.score}}</h3>
+                                                    <h4>Score</h4>
+                                                </li>
+                                                <li>
+                                                    <h3>{{i.wins}}-{{i.loses}}</h3>
+                                                    <h4>W-L</h4>
+                                                </li>
+                                                <li>
+                                                    <h3>{{i.highest}}</h3>
+                                                    <h4>Highest</h4>
+                                                </li>
+                                                <li>
+                                                    <h3>{{i.lowest}}</h3>
+                                                    <h4>Lowest</h4>
+                                                </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                    <div class="contact__content">
+                        <div class="contact__data">
+                            <span class="section__subtitle">Players</span>
+                            <h2 class="section__title">
+                                Today's winners and losers<span>.</span>
+                            </h2>
+                            <p class="contact__description">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                                Accusantium ullam officiis, inventore nam necessitatibus pariatur! 
+                                Fuga reiciendis nobis ipsam deserunt similique ea nam! Eum commodi velit maiores quibusdam id labore.
+                            </p>
+                        </div>
+
+                        <div class="contact__card">
+                            {% for i in winners %}
+                                {% if i.trend > 0%}
+                                <div class="contact__card-box">
+                                    <div class="contact__card-info">
+                                        <i class='bx bxs-info-circle'></i>                                   
+                                        <div>
+                                        
+                                                <h3 class="contact__card-title">
+                                                    Winner
+                                                </h3>
+                                            
+                                            <p class="contact__card-description">
+                                                <br>
+                                                <h3 > {{i.name}}</h3>
+                                                
+                                                {% if i.trend > 0 %}
+                                                <h3 style="display: inline;"> <span style="color: rgb(9, 248, 9);"> <i class='bx bxs-upvote'></i> </span> {{i.trend}}
+                                                </h3>
+                                                {% elif 0 > i.trend %}
+                                                <h3 style="display: inline;"> <span style="color: rgb(255, 71, 71);"> <i class='bx bxs-downvote'></i> </span>
+                                                    {{(i.trend|int)*(-1)}}</h3>
+                                                {% else %}
+                                                <!--<h3 style="display: inline;"><i class='bx bx-minus'></i></h3>-->
+                                                <h3 style="display: inline;">New</h3>
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <br>
+                        <hr>
+                        <br>
+                        <div class="contact__card">
+                            {% for i in losers %}
+                                {% if 0 > i.trend %}
+                                <div class="contact__card-box">
+                                    <div class="contact__card-info">
+                                        <i class='bx bxs-info-circle'></i>
+                                        <div>
+                                            
+                                            <h3 class="contact__card-title">
+                                                Loser
+                                            </h3>
+                                
+                                            <p class="contact__card-description">
+                                            <br>
+                                            <h3> {{i.name}}</h3>
+                                            {% if i.trend > 0 %}
+                                            <h3 style="display: inline;"> <span style="color: rgb(9, 248, 9);"> <i class='bx bxs-upvote'></i>
+                                                </span> {{i.trend}}
+                                            </h3>
+                                            {% elif 0 > i.trend %}
+                                            <h3 style="display: inline;"> <span style="color: rgb(255, 71, 71);"> <i class='bx bxs-downvote'></i>
+                                                </span>
+                                                {{(i.trend|int)*(-1)}}</h3>
+                                            {% else %}
+                                            <!--<h3 style="display: inline;"><i class='bx bx-minus'></i></h3>-->
+                                            <h3 style="display: inline;">New</h3>
+                                            {% endif %}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </section>
+            
+            <!--==================== LOGIN/SIGNUP ====================-->
+            <section class="value section" id="value">
+                <div class="value__container container grid">
+                    <div class="value__images">
+                        <div class="value__orbe"></div>
+    
+                        <div class="value__img" style="width: auto; margin-bottom: 40px;">
+                            <!--<img src="../static/img/value.webp" alt="">-->
+                            <div class="containerr" style="margin-top: 20px;">
+                                <div class="form-containerr">
+                                    <div class="left-containerr">
+                                    <div class="left-inner-containerr">
+                                    <h2 style="color: white;">Find your dream job</h2>
+                                    <br>
+                                    <p id="demo"></p>
+                                    <br>
+                                    </div>
+                                    </div>
+                                    <div class="right-containerr" id="searchnow" >
+                                    <div class="right-inner-containerr" style="padding-left: 30px;">
+                                        <div class="hero">
+                                            <div class="form-box" >
+                                              <div class="button-box" style="margin-left: 10px;">
+                                                  <div id="btnn"></div>
+                                                  <button type="button" class="toggle-butn" ><p class="loginn" style="font: 16px; outline: none;" onclick="login()">Login</p></button>
+                                                  <button type="button" class="toggle-butn"><p class="registerr" style="font: 16px; outline: none;" onclick="register()">Register</p></button>
+                                              </div>
+                                              <form id="login" class="inputt-groupp1" action="/login" method="POST">
+                                                <input type="email" class="inputt-field" placeholder="Email" name="email" required>
+                                                <input type="password" class="inputt-field" placeholder="Password" name="password" required>
+                                                <a href="#" class="forgot" style="color: #d2d6da; margin-top: 10px; margin-left: 5px;">Forgot Password?</a>
+                                                <br>
+                                                <br>
+                                                <button type="submit" class="submitt-btn" style="margin-top: 20px;">Login</button>
+                                              </form>
+                                              <form id="register" class="inputt-groupp" action="/register" method="POST">
+                                                <input type="text" class="inputt-field" placeholder="Username" name="username" required>
+                                                <input type="email" class="inputt-field" placeholder="Email" name="email" required>
+                                                <input type="password" class="inputt-field" placeholder="Password" name="password" required>
+                                                <input type="password" class="inputt-field" placeholder="Confirm Password" name="conf_password" required>
+                                                <button type="submit" class="submitt-btn" style="margin-top: 10px;">Register</button>
+                                              </form>
+                                            </div>
+                                          </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="value__content">
+                        <div class="value__data">
+                            <span class="section__subtitle">Our Value</span>
+                            <h2 class="section__title">
+                                Value We Give To You<span>.</span>
+                            </h2>
+                            <p class="value__description">
+                                We always ready to help by providing the best service for you. 
+                                We believe a good place to live can make your life better.
+                            </p>
+                        </div>
+
+                        <div class="value__accordion">
+                            <div class="value__accordion-item">
+                                <header class="value__accordion-header">
+                                    <i class='bx bxs-shield-x value__accordion-icon'></i>
+                                    <h3 class="value__accordion-title">
+                                        Content production
+                                    </h3>
+                                    <div class="value__accordion-arrow">
+                                        <i class='bx bxs-down-arrow'></i>
+                                    </div>
+                                </header>
+
+                                <div class="value__accordion-content">
+                                    <p class="value__accordion-description">
+                                        Price we provides is the best for you, 
+                                        we guarantee no price changes on your property due 
+                                        to various unexpected costs that may come.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="value__accordion-item">
+                                <header class="value__accordion-header">
+                                    <i class='bx bxs-x-square value__accordion-icon'></i>
+                                    <h3 class="value__accordion-title">
+                                        Branding and design
+                                    </h3>
+                                    <div class="value__accordion-arrow">
+                                        <i class='bx bxs-down-arrow'></i>
+                                    </div>
+                                </header>
+
+                                <div class="value__accordion-content">
+                                    <p class="value__accordion-description">
+                                        Price we provides is the best for you, 
+                                        we guarantee no price changes on your property due 
+                                        to various unexpected costs that may come.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="value__accordion-item">
+                                <header class="value__accordion-header">
+                                    <i class='bx bxs-bar-chart-square value__accordion-icon' ></i>
+                                    <h3 class="value__accordion-title">
+                                        Sales and marketing
+                                    </h3>
+                                    <div class="value__accordion-arrow">
+                                        <i class='bx bxs-down-arrow'></i>
+                                    </div>
+                                </header>
+
+                                <div class="value__accordion-content">
+                                    <p class="value__accordion-description">
+                                        Price we provides is the best for you, 
+                                        we guarantee no price changes on your property due 
+                                        to various unexpected costs that may come.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="value__accordion-item">
+                                <header class="value__accordion-header">
+                                    <i class='bx bxs-checkbox-checked value__accordion-icon'></i>
+                                    <h3 class="value__accordion-title">
+                                        Public relations
+                                    </h3>
+                                    <div class="value__accordion-arrow">
+                                        <i class='bx bxs-down-arrow'></i>
+                                    </div>
+                                </header>
+
+                                <div class="value__accordion-content">
+                                    <p class="value__accordion-description">
+                                        Price we provides is the best for you, 
+                                        we guarantee no price changes on your property due 
+                                        to various unexpected costs that may come.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+             
+            <section class="timeline">
+                <ul>
+                <li>
+                    <div>
+                    <time style="color: white;">1</time><p style="color: rgb(231, 225, 225);">Is there a problem finding your dream home? </p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                    <time style="color: white;">2</time><p style="color: rgb(231, 225, 225);">Is there a problem finding your dream home?</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                    <time style="color: white;">3</time><p style="color: rgb(231, 225, 225);">Is there a problem finding your dream home? </p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                    <time style="color: white;">4</time><p style="color: rgb(231, 225, 225);">Is there a problem finding your dream home? </p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                    <time style="color: white;">5</time><p style="color: rgb(231, 225, 225);">Is there a problem finding your dream home? </p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                    <time style="color: white;">6</time><p style="color: rgb(231, 225, 225);">Is there a problem finding your dream home? </p>
+                    </div>
+                </li>
+                </ul>
+            </section>
+                <br>
+
+            <section class="section" id="popular">
+                <div class="contact__container container grid">
+                    
+                    <div class="contact__images">
+                        <div class="contact__orbe" style="height: auto; padding: 15px;" id="list">
+                            <div class="search">
+                                <form action="/ssearch" method="POST" class="search-form" style="display: flex;">
+                                    <input type="number" class="subscribe__input" placeholder="Fetch" style="width: 20%; margin-right: 10px;"
+                                        name="num" value="{{n}}">
+                                    <input type="text" id="tags3" class="subscribe__input" placeholder="Search..." name="search" style="
+                                                                border-bottom-right-radius: 0px;
+                                                                border-top-right-radius: 0px;">
+                                    <input type="submit" value="Submit" style="
+                                                                width: 20%; 
+                                                                background-color: #C69A6Dff; 
+                                                                border-bottom-right-radius: 10px;
+                                                                border-top-right-radius: 10px;
+                                                                ">
+                                </form>
+                            </div>
+                            <br>
+                            
+                            {% for profile in all_users %}
+                            <div class="contact__card-box" id="cardd">
+                                <div class="contact__card-info">
+                                    
+                                    <div class="ccard" style="margin: 0px;">
+                                        <div class="img">
+                                            {% if profile.filename %}
+                                                <img src="/downloaddd/{{profile.filename}}">
+                                            {% else %}
+                                                <img src="../static/img/Default_pfp.svg.png">
+                                            {% endif %}
+                                        </div>
+                                        <div class="infos">
+                                            <div class="links" style="display: flex;">
+                                                <h3 style="display: inline; margin-right: 50px; ">{{profile.name}}</h3>
+                                                <!--<form action="/follow/{{profile.name}}" method="POST">
+                                                    <button type="submit" value="Submit" class="follow">Follow</button>
+                                                </form>-->
+                                            </div>
+                                            <br>
+                                            <hr>
+                                            <h4 style="display: inline; margin-right: 50px; ">Followers: {{profile.followers|length}}</h4>
+                                            <h4 style="display: inline; margin-right: 50px; ">Following: {{profile.following|length}}</h4>
+                                            <br>
+                                            <hr>
+                                            <h4 style="display: inline; margin-right: 50px; ">{{profile.bio}}</h4>
+                                        </div>
+                                        <br>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                   
+                    <div class="contact__content">
+                        <div class="contact__data">
+                            <span class="section__subtitle">All users</span>
+                            <h2 class="section__title">
+                                Discover other users<span>.</span>
+                            </h2>
+                            <p class="contact__description">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                Accusantium ullam officiis, inventore nam necessitatibus pariatur!
+                                Fuga reiciendis nobis ipsam deserunt similique ea nam! Eum commodi velit maiores quibusdam id labore.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </section>
+
+            <br>
+            <section>
+                <div class="container">
+                    <span class="section__subtitle">Featured Articles</span>
+                    <a href="/blogs" style="text-decoration: underline; text-decoration-color: #C69A6Dff;"><h2 class="section__title">
+                        Our Blog<span>.</span>
+                    </h2></a>
+
+                    <div class="popular__container grid swiper">
+                        <div class="swiper-wrapper">
+                            
+                            {% for i in articles %}
+                            <article class="popular__card swiper-slide" style="overflow-x:hidden; overflow-y: hidden;">
+                                {% if i.filename %}
+                                    <img src="/downloadd/{{i.filename}}" alt="" class="popular__img">
+                                {% else %}
+                                    <img src="../static/img/popular1.webp" alt="" class="popular__img">
+                                {% endif %}
+                            
+                                <div class="popular__data" style="height: 300px; 
+                                   ">
+                                    <!--<p class="popular__price">
+                                        <span>{{i.topic}}</span>
+                                    <p>-->
+                                    <div style="display: flex;">
+                                        <h3 class="popular__title" >
+                                            {{i.title}}
+                                        </h3>
+                                        <a href="/blogs" style="margin-left: 10%;"><p class="popular__description" style="border: 2px solid #C69A6Dff; border-radius: 15px; text-align: center; background-color: #C69A6Dff;">Read more</p></a>
+                                    </div>
+                                    <hr>
+                                    <br>
+                                    <p class="popular__description" >
+                                        {{i.article|safe}}...
+                                    </p>
+                                </div>
+                            </article>
+                            {% endfor %}
+
+                            <!--<article class="popular__card swiper-slide">
+                                <img src="../static/img/popular1.webp" alt="" class="popular__img">
+    
+                                <div class="popular__data">
+                                    <h2 class="popular__price">
+                                        <span>$</span>66,356
+                                    </h2>
+                                    <h3 class="popular__title">
+                                        Garden City Assat
+                                    </h3>
+                                    <p class="popular__description">
+                                        Street The Garden City Of Miraflores, Lima - Perú Av. Sol #9876
+                                    </p>
+                                </div>
+                            </article>
+
+                            <article class="popular__card swiper-slide">
+                                <img src="../static/img/popular2.webp" alt="" class="popular__img">
+    
+                                <div class="popular__data">
+                                    <h2 class="popular__price">
+                                        <span>$</span>35,159
+                                    </h2>
+                                    <h3 class="popular__title">
+                                        Gables Luxurious House
+                                    </h3>
+                                    <p class="popular__description">
+                                        Street The Garden City Of Miraflores, Lima - Perú Av. Sol #9876
+                                    </p>
+                                </div>
+                            </article>
+    
+                            <article class="popular__card swiper-slide">
+                                <img src="../static/img/popular3.webp" alt="" class="popular__img">
+    
+                                <div class="popular__data">
+                                    <h2 class="popular__price">
+                                        <span>$</span>75,043
+                                    </h2>
+                                    <h3 class="popular__title">
+                                        Garden Orchard City
+                                    </h3>
+                                    <p class="popular__description">
+                                        Street The Garden City Of Miraflores, Lima - Perú Av. Sol #9876
+                                    </p>
+                                </div>
+                            </article>
+    
+                            <article class="popular__card swiper-slide">
+                                <img src="../static/img/popular4.webp" alt="" class="popular__img">
+    
+                                <div class="popular__data">
+                                    <h2 class="popular__price">
+                                        <span>$</span>62,024
+                                    </h2>
+                                    <h3 class="popular__title">
+                                        Luxurious City Garden
+                                    </h3>
+                                    <p class="popular__description">
+                                        Street The Garden City Of Miraflores, Lima - Perú Av. Sol #9876
+                                    </p>
+                                </div>
+                            </article>
+
+                            <article class="popular__card swiper-slide">
+                                <img src="../static/img/popular5.webp" alt="" class="popular__img">
+    
+                                <div class="popular__data">
+                                    <h2 class="popular__price">
+                                        <span>$</span>47,043
+                                    </h2>
+                                    <h3 class="popular__title">
+                                        Aliva Private Garden
+                                    </h3>
+                                    <p class="popular__description">
+                                        Street The Garden City Of Miraflores, Lima - Perú Av. Sol #9876
+                                    </p>
+                                </div>
+                            </article>-->
+                        </div>
+
+                        <div class="swiper-button-next">
+                            <i class='bx bx-chevron-right' ></i>
+                        </div>
+                        <div class="swiper-button-prev">
+                            <i class='bx bx-chevron-left'></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <br>
+            <!--==================== CONTACT ====================-->
+            <section class="contact section" id="contact">
+                <div class="contact__container container grid">
+                    <div class="contact__images">
+                        <div class="contact__orbe"></div>
+    
+                        <div class="contact__img">
+                            <img src="../static/img/contact.webp" alt="">
+                        </div>
+                    </div>
+
+                    <div class="contact__content">
+                        <div class="contact__data">
+                            <span class="section__subtitle">Contact Us</span>
+                            <h2 class="section__title">
+                                Easy to Contact us<span>.</span>
+                            </h2>
+                            <p class="contact__description">
+                                Is there a problem finding your dream home? Need a 
+                                guide in buying first home? or need a consultation 
+                                on residential issues? just contact us.
+                            </p>
+                        </div>
+
+                        <div class="contact__card">
+                            <div class="contact__card-box">
+                                <div class="contact__card-info">
+                                    <i class='bx bxs-phone-call'></i>
+                                    
+                                    <div>
+                                        <h3 class="contact__card-title">
+                                            Call
+                                        </h3>
+                                        <p class="contact__card-description">
+                                            022.321.165.19
+                                        </p>
+                                    </div>
+                                </div>
+                                <button class="button contact__card-button">
+                                    Call Now
+                                </button>
+                            </div>
+
+                            <div class="contact__card-box">
+                                <div class="contact__card-info">
+                                    <i class='bx bxs-message-rounded-dots' ></i>
+                                    
+                                    <div>
+                                        <h3 class="contact__card-title">
+                                            Chat
+                                        </h3>
+                                        <p class="contact__card-description">
+                                            022.321.165.19
+                                        </p>
+                                    </div>
+                                </div>
+                                <button class="button contact__card-button">
+                                    Chat Now
+                                </button>
+                            </div>
+
+                            <div class="contact__card-box">
+                                <div class="contact__card-info">
+                                    <i class='bx bxs-video' ></i>
+                                    
+                                    <div>
+                                        <h3 class="contact__card-title">
+                                            Video Call
+                                        </h3>
+                                        <p class="contact__card-description">
+                                            022.321.165.19
+                                        </p>
+                                    </div>
+                                </div>
+                                <button class="button contact__card-button">
+                                    Video Call Now
+                                </button>
+                            </div>
+
+                            <div class="contact__card-box">
+                                <div class="contact__card-info">
+                                    <i class='bx bxs-envelope'></i>
+                                    
+                                    <div>
+                                        <h3 class="contact__card-title">
+                                            Message
+                                        </h3>
+                                        <p class="contact__card-description">
+                                            022.321.165.19
+                                        </p>
+                                    </div>
+                                </div>
+                                <button class="button contact__card-button">
+                                    Message Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+
+            <!--==================== SUBSCRIBE ====================-->
+            <section class="subscribe section">
+                <div class="subscribe__container container">
+                    <h1 class="subscribe__title">
+                        Get Started with Royal Assembly
+                    </h1>
+                    <p class="subscribe__description">
+                        Subscribe to our newsletter
+                    </p>
+                    <!--<a href="#" class="button subscribe__button">
+                        Get Started
+                    </a>-->
+                    <form action="" class="subscribe__form">
+                        <input type="text" placeholder="Enter email" class="subscribe__input">
+                        <button class="button">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <!--==================== FOOTER ====================-->
+        <footer class="footer section" id="foot">
+            <div class="footer__container container grid">
+                <div>
+                    <a href="" class="footer__logo" style="letter-spacing: 4px;">
+                        Royal Assembly <i class='bx bxs-crown'></i>
+                    </a>
+                    <p class="footer__description">
+                        Our vision is to make all people <br> 
+                        the best place to live for them.
+                    </p>
+                </div>
+
+                <div class="footer__content">
+                    <div>
+                        <h3 class="footer__title">
+                            About
+                        </h3>
+
+                        <ul class="footer__links">
+                            <li>
+                                <a href="#" class="footer__link">About Us</a>
+                            </li>
+                            <li>
+                                <a href="#" class="footer__link">Features</a>
+                            </li>
+                            <li>
+                                <a href="#" class="footer__link">News & Blog</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="footer__title">
+                            Company
+                        </h3>
+
+                        <ul class="footer__links">
+                            <li>
+                                <a href="#" class="footer__link">How We Work?</a>
+                            </li>
+                            <li>
+                                <a href="#" class="footer__link">Capital</a>
+                            </li>
+                            <li>
+                                <a href="#" class="footer__link">Security</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="footer__title">
+                            Support
+                        </h3>
+
+                        <ul class="footer__links">
+                            <li>
+                                <a href="#" class="footer__link">FAQs</a>
+                            </li>
+                            <li>
+                                <a href="#" class="footer__link">Support center</a>
+                            </li>
+                            <li>
+                                <a href="#" class="footer__link">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="footer__title">
+                            Follow us
+                        </h3>
+
+                        <ul class="footer__social">
+                            <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                                <i class='bx bxl-facebook-circle' ></i>
+                            </a>
+                            <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                                <i class='bx bxl-instagram-alt' ></i>
+                            </a>
+                            <a href="https://www.pinterest.com/" target="_blank" class="footer__social-link">
+                                <i class='bx bxl-pinterest' ></i>
+                            </a>    
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__info container">
+                <span class="footer__copy">
+                    &#169; Vaggelisdrak. All rigths reserved
+                </span>
+
+                <div class="footer__privacy">
+                    <a href="#">Terms & Agreements</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </footer>
+
+
+        <!--========== SCROLL UP ==========-->
+        <a href="#" class="scrollup" id="scroll-up">
+            <i class='bx bx-chevrons-up'></i>
+        </a>
+
+        <!--=============== SCROLLREVEAL ===============-->
+        <script src="../static/js/scrollreveal.min.js"></script>
+
+        <!--=============== SWIPER JS ===============-->
+        <script src="../static/js/swiper-bundle.min.js"></script>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="../static/js/main.js"></script>
+
+        <!--=============== TYPING ANIMATION===============-->
+        <script src="../static/js/typing.js"></script>
+
+        <!---search input AI-->
+        <script>
+            jQuery.curCSS = function(element, prop, val) {
+                return jQuery(element).css(prop, val);
+            };
+            $( function() {
+                $.ajax({
+                    url: '{{ url_for("autocomplete") }}'
+                    }).done(function(data){
+                        $('#tags3').autocomplete({
+                            source: data,
+                            minLength: 1
+                        });
+                    });
+                });
+        </script>
+        <script>
+            const sections = document.querySelectorAll('section[id]')
+
+            function scrollActive(){
+                const scrollY = window.pageYOffset
+
+                sections.forEach(current =>{
+                    const sectionHeight = current.offsetHeight,
+                        sectionTop = current.offsetTop - 58,
+                        sectionId = current.getAttribute('id')
+
+                    if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+                        document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
+                    }else{
+                        document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
+                    }
+                })
+            }
+            window.addEventListener('scroll', scrollActive)
+        </script>
+    </body>
+</html>
