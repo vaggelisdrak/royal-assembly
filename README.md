@@ -20,3 +20,8 @@ Tech stack used:
 * SQlalchemy
 * Ajax
 * Jquery
+
+
+
+https://github.com/vaggelisdrak/royal-assembly/assets/71725114/5b93a100-31bd-4f80-bc5d-3fc3537ea7d7
+
