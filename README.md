@@ -1,5 +1,5 @@
 # royal-assembly
-Full stack web application for a client using Python. The main purpose of this app was to create a platform where users can create their lists of players or teams to help organize tournaments more efficiently.
+Full stack web application for a client using Python. The main purpose of this app was to create a platform where users can create their lists of players or teams to help organize tournaments/LISTS more efficiently.
 * Aesthetic and Responsive website
 * Smooth Js animations 
 * Secure authentication with password hashing
